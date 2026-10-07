@@ -1,4 +1,4 @@
-const CACHE_NAME = 'colour-io-v2';
+const CACHE_NAME = 'colour-io-v3';
 const urlsToCache = [
   './',
   './index.html',
