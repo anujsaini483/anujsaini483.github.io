@@ -3,6 +3,7 @@
   "dir": "ltr",
   "display": "standalone",
   "name": "Block Paint",
+  "short_name": "Block Paint",
   "orientation": "any",
   "scope": "/colour-io/",
   "start_url": "/colour-io/",
