@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
- <link rel="manifest" href="/colour-io/manifest.json">
+  <link rel="manifest" href="./manifest.json">
 <title>Paper.io 2 - Ultimate Edition</title>
 <style>
   :root {
@@ -1939,7 +1939,7 @@ requestAnimationFrame(mainLoop);
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/colour-io/sw.js');
+        navigator.serviceWorker.register('./sw.js');
   });
 }
 </script>
