@@ -10,6 +10,7 @@
   "theme_color": "#ffffff",
   "description": "A fun block painting game",
   "id": "/colour-io/",
+  "categories": ["games", "entertainment"],
   "icons": [
     {
       "src": "192.png",
