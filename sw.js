@@ -1,43 +1,30 @@
-// This is the "Offline page" service worker
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js'); 
+const CACHE_NAME = 'block-paint-v6';
 
-const CACHE = "pwabuilder-page"; 
+// Service Worker Install
+self.addEventListener('install', (event) => {
+  self.skipWaiting();
+});
 
-// Yahan humne file ka sahi path set kar diya hai
-const offlineFallbackPage = "/colour-io/index.html";
+// Service Worker Activate
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim());
+});
 
-self.addEventListener("message", (event) => { 
-  if (event.data && event.data.type === "SKIP_WAITING") { 
-    self.skipWaiting(); 
-  } 
-}); 
-
-self.addEventListener('install', async (event) => { 
-  event.waitUntil( 
-    caches.open(CACHE) 
-      .then((cache) => cache.add(offlineFallbackPage)) 
-  ); 
-}); 
-
-if (workbox.navigationPreload.isSupported()) { 
-  workbox.navigationPreload.enable(); 
-} 
-
-self.addEventListener('fetch', (event) => { 
-  if (event.request.mode === 'navigate') { 
-    event.respondWith((async () => { 
-      try { 
-        const preloadResp = await event.preloadResponse; 
-        if (preloadResp) { 
-          return preloadResp; 
-        } 
-        const networkResp = await fetch(event.request); 
-        return networkResp; 
-      } catch (error) { 
-        const cache = await caches.open(CACHE); 
-        const cachedResp = await cache.match(offlineFallbackPage); 
-        return cachedResp; 
-      } 
-    })()); 
-  } 
+// Fetch handler for offline support
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      return fetch(event.request).then((response) => {
+        return response;
+      }).catch(() => {
+        // Agar offline hain aur page load karna ho toh index.html dega
+        if (event.request.mode === 'navigate') {
+          return caches.match('/colour-io/index.html');
+        }
+      });
+    })
+  );
 });
