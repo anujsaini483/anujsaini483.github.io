@@ -1,28 +1,36 @@
-const CACHE_NAME = 'block-paint-offline-v8';
+// PWABuilder Official Verified Service Worker for GitHub Pages
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
-// Install event - turant skip karega taaki error na aaye
-self.addEventListener('install', (event) => {
-  self.skipWaiting();
+const CACHE = "block-paint-final-v1";
+const offlineFallbackPage = "/colour-io/index.html";
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
-// Activate event - control apne hath me lega
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
-});
-
-// Fetch event - network se laayega aur sath hi sath cache me save karta jayega
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        const responseClone = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseClone);
-        });
-        return response;
-      })
-      .catch(() => {
-        return caches.match(event.request);
-      })
+self.addEventListener('install', async (event) => {
+  event.waitUntil(
+    caches.open(CACHE).then((cache) => cache.add(offlineFallbackPage))
   );
+});
+
+if (workbox.routing) {
+  workbox.routing.registerRoute(
+    new RegExp('/colour-io/.*'),
+    new workbox.strategies.NetworkFirst({
+      cacheName: CACHE,
+    })
+  );
+}
+
+self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match(offlineFallbackPage);
+      })
+    );
+  }
 });
