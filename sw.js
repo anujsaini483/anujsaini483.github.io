@@ -1,30 +1,52 @@
-const CACHE_NAME = 'block-paint-v6';
+const CACHE_NAME = 'block-paint-v7';
+const urlsToCache = [
+  '/colour-io/',
+  '/colour-io/index.html',
+  '/colour-io/manifest.json'
+];
 
-// Service Worker Install
+// Install event - caching the main files
 self.addEventListener('install', (event) => {
-  self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        return cache.addAll(urlsToCache);
+      })
+      .then(() => self.skipWaiting())
+  );
 });
 
-// Service Worker Activate
+// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheName !== CACHE_NAME) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(() => self.clients.claim())
+  );
 });
 
-// Fetch handler for offline support
+// Fetch event - serve from cache or network
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).then((response) => {
-        return response;
-      }).catch(() => {
-        // Agar offline hain aur page load karna ho toh index.html dega
-        if (event.request.mode === 'navigate') {
-          return caches.match('/colour-io/index.html');
+    caches.match(event.request)
+      .then((response) => {
+        if (response) {
+          return response;
         }
-      });
-    })
+        return fetch(event.request).then((networkResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, networkResponse.clone());
+            return networkResponse;
+          });
+        });
+      }).catch(() => {
+        return caches.match('/colour-io/index.html');
+      })
   );
 });
