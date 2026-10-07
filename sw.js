@@ -1,8 +1,8 @@
-const CACHE_NAME = 'block-paint-v2';
+const CACHE_NAME = 'block-paint-v3';
 const urlsToCache = [
-  '/colour-io/',
-  '/colour-io/index.html',
-  '/colour-io/manifest.json'
+  './',
+  './index.html',
+  './manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
@@ -11,7 +11,12 @@ self.addEventListener('install', (event) => {
       .then((cache) => {
         return cache.addAll(urlsToCache);
       })
+      .then(() => self.skipWaiting())
   );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim());
 });
 
 self.addEventListener('fetch', (event) => {
