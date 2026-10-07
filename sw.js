@@ -2,8 +2,9 @@ const CACHE_NAME = 'colour-io-v2';
 const urlsToCache = [
   './',
   './index.html',
-  './style.css',
-  './script.js'
+  './manifest.json',
+  './192.png',
+  './512.png'
 ];
 
 // 1. Install Event: Saari zaroori files ko cache mein save karna
