@@ -1,25 +1,16 @@
-const CACHE_NAME = 'block-paint-v5';
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
-self.addEventListener('install', (event) => {
-  self.skipWaiting();
-});
+const CACHE = "block-paint-offline-v1";
 
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
-});
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        return response || fetch(event.request).then((fetchResponse) => {
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, fetchResponse.clone());
-            return fetchResponse;
-          });
-        }).catch(() => {
-          // Fallback option when offline
-        });
-      })
+if (workbox) {
+  console.log(`Workbox is loaded 🎉`);
+  
+  workbox.routing.registerRoute(
+    new RegExp('/colour-io/'),
+    new workbox.strategies.NetworkFirst({
+      cacheName: CACHE,
+    })
   );
-});
+} else {
+  console.log(`Workbox failed to load 😬`);
+}
