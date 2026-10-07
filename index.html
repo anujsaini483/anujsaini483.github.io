@@ -41,7 +41,6 @@
     background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bot) 100%);
   }
 
-  /* टॉप राइट सेटिंग्स गियर आइकॉन - बिल्कुल इमेज जैसा डार्क नेवी सर्कल + सफेद बॉर्डर और ग्लो */
   .screen-top-gear {
     position: fixed;
     top: 22px;
@@ -64,7 +63,6 @@
     transform: scale(0.93);
   }
 
-  /* इन-गेम HUD Progress Bar */
   #hudContainer {
     position: absolute;
     top: 12px;
@@ -200,7 +198,6 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
   }
 
-  /* Screens & Modals */
   .screen {
     position: absolute;
     inset: 0;
@@ -216,7 +213,6 @@
     display: flex;
   }
 
-  /* START SCREEN - Exact Match to Reference Image */
   #startScreen {
     justify-content: center;
     padding: 18px 16px;
@@ -237,7 +233,6 @@
     position: relative;
   }
 
-  /* Start Menu Top Progress Bar (Exact Match) */
   .start-top-progress-container {
     width: 82%;
     margin-bottom: 14px;
@@ -302,7 +297,6 @@
     letter-spacing: 0.4px;
   }
 
-  /* Preview Frame Card - White Rounded Border & Inside 1st Badge */
   .preview-frame-card {
     width: 100%;
     background: #FFFFFF;
@@ -346,7 +340,6 @@
     border-radius: 20px;
   }
 
-  /* 3 Stats Row - Open layout with vertical dividers like Reference Image */
   .start-stats-bar {
     width: 100%;
     display: flex;
@@ -396,7 +389,6 @@
     text-shadow: 0 2.5px 0 rgba(0, 22, 80, 0.9), 0 4px 8px rgba(0, 0, 0, 0.35);
   }
 
-  /* Glossy 3D Start Screen Buttons (Exact Match to Image) */
   .glossy-action-btn {
     position: relative;
     width: 100%;
@@ -470,7 +462,6 @@
     font-size: 1.28rem;
   }
 
-  /* Modals Card-3D & Other Screen Styles */
   .card-3d {
     width: 100%;
     background: #FFFFFF;
@@ -517,7 +508,6 @@
     color: var(--navy);
   }
 
-  /* 3D Action Buttons for Modals */
   .btn-3d {
     position: relative;
     width: 100%;
@@ -673,14 +663,12 @@
 
   <canvas id="gameCanvas"></canvas>
 
-  <!-- टॉप राइट गियर सेटिंग्स आइकॉन (बिल्कुल इमेज जैसा) -->
   <button class="screen-top-gear" onclick="openSettings()" title="Settings">
     <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF">
       <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z"/>
     </svg>
   </button>
 
-  <!-- HUD -->
   <div id="hudContainer">
     <div class="progress-wrapper">
       <div class="progress-pill-outer">
@@ -714,11 +702,9 @@
     <div id="killBanner">KO! +500</div>
   </div>
 
-  <!-- Start Menu (Exact Match to Reference Image) -->
   <div id="startScreen" class="screen active">
     <div class="menu-container">
       
-      <!-- Top Level Progress Header & Bar -->
       <div class="start-top-progress-container">
         <div class="start-progress-header">
           <span class="start-progress-title">LEVEL PROGRESS</span>
@@ -735,7 +721,6 @@
         </div>
       </div>
 
-      <!-- Preview Box with White Rounded Border & Inside Crown Badge -->
       <div class="preview-frame-card">
         <div class="preview-inner-wrap">
           <div class="preview-crown-badge">
@@ -749,7 +734,6 @@
         </div>
       </div>
 
-      <!-- 3 Stats Row with Dividers -->
       <div class="start-stats-bar">
         <div class="start-stat-col">
           <svg class="start-stat-icon" viewBox="0 0 48 48">
@@ -807,7 +791,6 @@
         </div>
       </div>
 
-      <!-- Play & Select Buttons (Exact 3D Glossy Style with Vertical Divider) -->
       <button class="glossy-action-btn glossy-pink" id="playNowBtn" onclick="playHighestUnlocked()">
         <div class="glossy-btn-icon">
           <svg width="38" height="38" viewBox="0 0 24 24" fill="#FFFFFF">
@@ -835,7 +818,6 @@
     </div>
   </div>
 
-  <!-- Level Select -->
   <div id="levelScreen" class="screen">
     <div class="menu-container">
       <div class="card-3d">
@@ -847,7 +829,6 @@
     </div>
   </div>
 
-  <!-- Settings Screen -->
   <div id="settingsScreen" class="screen">
     <div class="menu-container">
       <div class="card-3d">
@@ -864,7 +845,6 @@
     </div>
   </div>
 
-  <!-- Pause Modal -->
   <div id="pauseScreen" class="screen">
     <div class="menu-container">
       <div class="card-3d">
@@ -878,7 +858,6 @@
     </div>
   </div>
 
-  <!-- Victory Modal -->
   <div id="victoryScreen" class="screen">
     <div class="menu-container">
       <div class="card-3d">
@@ -894,7 +873,6 @@
     </div>
   </div>
 
-  <!-- Game Over Modal -->
   <div id="gameOverScreen" class="screen">
     <div class="menu-container">
       <div class="card-3d">
@@ -919,7 +897,6 @@ let playerSensitivity = parseFloat(localStorage.getItem('paperio_sensitivity') |
 let currentLevel = 1;
 let gameState = 'MENU';
 
-// PROFESSIONAL ACOUSTIC PIANO STUDIO BGM
 let audioCtx = null;
 let bgmInterval = null;
 
@@ -1642,19 +1619,16 @@ function renderArena() {
 const prevCanvas = document.getElementById('previewCanvas');
 const prevCtx = prevCanvas.getContext('2d');
 
-// Exact 3D Scene Preview Renderer Matching the Reference Image
 function renderStartPreview(now) {
   const w = prevCanvas.width, h = prevCanvas.height;
   prevCtx.clearRect(0, 0, w, h);
 
-  // 1. Bright Blue Sky Gradient
   const skyGrad = prevCtx.createLinearGradient(0, 0, 0, h * 0.52);
   skyGrad.addColorStop(0, "#0072F5");
   skyGrad.addColorStop(1, "#26C6FF");
   prevCtx.fillStyle = skyGrad;
   prevCtx.fillRect(0, 0, w, h * 0.55);
 
-  // Sky speed streaks
   prevCtx.save();
   prevCtx.strokeStyle = "rgba(255, 255, 255, 0.35)";
   prevCtx.lineCap = "round";
@@ -1666,7 +1640,6 @@ function renderStartPreview(now) {
   prevCtx.stroke();
   prevCtx.restore();
 
-  // 2. Mint Arena Floor with Perspective Curve
   const floorGrad = prevCtx.createLinearGradient(0, h * 0.28, 0, h);
   floorGrad.addColorStop(0, "#E4FFF7");
   floorGrad.addColorStop(1, "#BAFAEA");
@@ -1679,7 +1652,6 @@ function renderStartPreview(now) {
   prevCtx.closePath();
   prevCtx.fill();
 
-  // 3. Red & White Striped Track Barrier Along the Horizon
   prevCtx.save();
   prevCtx.beginPath();
   prevCtx.moveTo(0, h * 0.27);
@@ -1692,7 +1664,6 @@ function renderStartPreview(now) {
   prevCtx.lineWidth = 10;
   prevCtx.stroke();
 
-  // Red & White Curb Blocks
   const segments = 14;
   for (let i = 0; i < segments; i++) {
     const t1 = i / segments;
@@ -1710,7 +1681,6 @@ function renderStartPreview(now) {
   }
   prevCtx.restore();
 
-  // Left Turquoise Pool Rim Curve
   prevCtx.save();
   prevCtx.beginPath();
   prevCtx.ellipse(w * 0.01, h * 0.54, w * 0.14, h * 0.16, -0.08, -Math.PI * 0.45, Math.PI * 0.48);
@@ -1722,18 +1692,15 @@ function renderStartPreview(now) {
   prevCtx.stroke();
   prevCtx.restore();
 
-  // Floor Diagonal Light Shadow & Pink Trail Line
   const sphereX = w * 0.36;
   const sphereY = h * 0.53;
   const sphereR = 88;
 
-  // Soft floor shadow
   prevCtx.fillStyle = "rgba(20, 145, 130, 0.22)";
   prevCtx.beginPath();
   prevCtx.ellipse(sphereX - 18, sphereY + sphereR - 6, sphereR * 1.15, 22, -0.08, 0, Math.PI * 2);
   prevCtx.fill();
 
-  // Pink stripe on floor
   prevCtx.strokeStyle = "#FF99DF";
   prevCtx.lineWidth = 12;
   prevCtx.beginPath();
@@ -1741,7 +1708,6 @@ function renderStartPreview(now) {
   prevCtx.lineTo(sphereX + 10, sphereY + sphereR - 8);
   prevCtx.stroke();
 
-  // 4. Giant Glossy 3D Pink Sphere
   const ballGrad = prevCtx.createRadialGradient(
     sphereX - sphereR * 0.32, sphereY - sphereR * 0.35, sphereR * 0.08,
     sphereX, sphereY, sphereR
@@ -1756,7 +1722,6 @@ function renderStartPreview(now) {
   prevCtx.arc(sphereX, sphereY, sphereR, 0, Math.PI * 2);
   prevCtx.fill();
 
-  // 5. 3D Upright Pink Donut Block with Yellow Base & Sprinkles ("YOU")
   const bob = Math.sin(now / 320) * 2.5;
   const dx = sphereX + 90;
   const dy = sphereY + 34 + bob;
@@ -1766,25 +1731,21 @@ function renderStartPreview(now) {
   prevCtx.save();
   prevCtx.translate(dx, dy);
 
-  // Drop shadow
   prevCtx.fillStyle = "rgba(0, 70, 60, 0.28)";
   prevCtx.beginPath();
   prevCtx.roundRect(-dw * 0.5 - 4, -dh * 0.5 + 16, dw + 8, dh, 14);
   prevCtx.fill();
 
-  // Yellow bottom layer
   prevCtx.fillStyle = "#FFC700";
   prevCtx.beginPath();
   prevCtx.roundRect(-dw * 0.5, -dh * 0.5 + 11, dw, dh, 13);
   prevCtx.fill();
 
-  // Darker pink mid lip
   prevCtx.fillStyle = "#E01B84";
   prevCtx.beginPath();
   prevCtx.roundRect(-dw * 0.5, -dh * 0.5 + 5, dw, dh, 13);
   prevCtx.fill();
 
-  // Bright pink top face
   const topGrad = prevCtx.createLinearGradient(0, -dh * 0.5, 0, dh * 0.5);
   topGrad.addColorStop(0, "#FF85D8");
   topGrad.addColorStop(1, "#FF2E9E");
@@ -1793,7 +1754,6 @@ function renderStartPreview(now) {
   prevCtx.roundRect(-dw * 0.5, -dh * 0.5, dw, dh, 13);
   prevCtx.fill();
 
-  // Center Donut Hole (Gold rim + White center)
   prevCtx.fillStyle = "#B45309";
   prevCtx.beginPath();
   prevCtx.arc(0, 0, 11, 0, Math.PI * 2);
@@ -1803,7 +1763,6 @@ function renderStartPreview(now) {
   prevCtx.arc(0, 1, 8, 0, Math.PI * 2);
   prevCtx.fill();
 
-  // Colorful Sprinkles on Donut
   const sprinkles = [
     { x: -17, y: -18, ang: 0.6, col: "#00BBF9" },
     { x: 0,   y: -20, ang: 0.5, col: "#FEE440" },
@@ -1826,7 +1785,6 @@ function renderStartPreview(now) {
     prevCtx.stroke();
   });
 
-  // "YOU" Label & Downward Pointer Triangle above Donut
   prevCtx.fillStyle = "#FFFFFF";
   prevCtx.strokeStyle = "#0A2E8C";
   prevCtx.lineWidth = 4.5;
@@ -1962,6 +1920,7 @@ function openLevelSelect() {
 }
 
 updateStartMenuLabels();
+
 let lastTime = performance.now();
 function mainLoop(now) {
   const dt = Math.min(0.05, (now - lastTime) / 1000);
@@ -1974,6 +1933,9 @@ function mainLoop(now) {
   }
   requestAnimationFrame(mainLoop);
 }
+
+// ⚠️ यहीं पर चूक थी: लूप को शुरू करने के लिए पहली बार requestAnimationFrame कॉल करना जरूरी है!
+requestAnimationFrame(mainLoop);
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
