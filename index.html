@@ -1974,13 +1974,13 @@ function mainLoop(now) {
   }
   requestAnimationFrame(mainLoop);
 }
-requestAnimationFrame(mainLoop);
-    <script>
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/colour-io/sw.js');
   });
 }
 </script>
+
 </body>
 </html>
