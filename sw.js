@@ -1,10 +1,12 @@
-const CACHE_NAME = 'colour-io-v1';
+const CACHE_NAME = 'colour-io-v2';
 const urlsToCache = [
   './',
-  './index.html'
+  './index.html',
+  './style.css',
+  './script.js'
 ];
 
-// 1. Install Event: फाइलों को कैश में सेव करना
+// 1. Install Event: Saari zaroori files ko cache mein save karna
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -14,7 +16,7 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
-// 2. Activate Event: पुराना डेटा साफ करना
+// 2. Activate Event: Purana cache saaf karna
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -30,7 +32,7 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// 3. Fetch Event: इंटरनेट न होने पर कैश से गेम चलाना
+// 3. Fetch Event: Files ko cache ya network se load karna
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
